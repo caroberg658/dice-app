@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dice Roller Pro</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes roll {
+        0% { transform: rotate(0deg) scale(1); }
+        25% { transform: rotate(10deg) scale(1.1); }
+        50% { transform: rotate(-10deg) scale(1.1); }
+        75% { transform: rotate(5deg) scale(1.05); }
+        100% { transform: rotate(0deg) scale(1); }
+      }
+
+      .animate-roll {
+        animation: roll 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="bg-stone-100 text-stone-900 min-h-screen font-sans">
+    <div id="app" class="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+      <!-- Header -->
+      <header class="text-center mb-12">
+        <h1 class="text-5xl sm:text-7xl font-black tracking-tighter uppercase italic text-stone-900 mb-2">
+          Dice Roller
+        </h1>
+        <p class="text-stone-500 font-medium uppercase tracking-widest text-xs">
+          Professional Grade Randomization
+        </p>
+      </header>
+
+      <!-- Controls -->
+      <section class="bg-white rounded-3xl shadow-sm border border-stone-200 p-6 sm:p-8 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Dice Count -->
+          <div class="space-y-4">
+            <label for="dice-count" class="block text-xs font-bold uppercase tracking-wider text-stone-400">
+              Number of Dice (1-10)
+            </label>
+            <div class="flex items-center space-x-4">
+              <input 
+                type="number" 
+                id="dice-count" 
+                min="1" 
+                max="10" 
+                value="1" 
+                class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-xl font-bold focus:outline-none focus:ring-2 focus:ring-stone-900 transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Color Selection -->
+          <div class="space-y-4">
+            <label class="block text-xs font-bold uppercase tracking-wider text-stone-400">
+              Dice Colors (Select Multiple)
+            </label>
+            <div id="color-options" class="flex flex-wrap gap-3">
+              <!-- Colors injected by JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-stone-100 flex justify-center">
+          <button 
+            id="roll-button" 
+            class="group relative inline-flex items-center justify-center px-12 py-4 font-bold text-white transition-all duration-200 bg-stone-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-stone-800 active:scale-95"
+          >
+            <span class="relative">Roll All Dice</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Dice Display -->
+      <div id="dice-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 justify-items-center">
+        <!-- Dice injected by JS -->
+      </div>
+
+      <!-- Instructions -->
+      <footer class="mt-16 text-center text-stone-400 text-xs">
+        <p>Click a die to exclude/include it from the next roll.</p>
+        <p class="mt-2">&copy; 2026 Dice Roller Pro. Static Client-Side App.</p>
+      </footer>
+    </div>
+    <!-- Pure JS file -->
+    <script src="script.js"></script>
+  </body>
+</html>
+
